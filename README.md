@@ -6,7 +6,7 @@
 
 1. Read all instructions before beginning the assessment
 
-2. Clone this repository
+2. FORK this repository
 
 3. Create a branch named `first-last` where `first` is your first name and
    `last` is your last name
