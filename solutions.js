@@ -105,16 +105,21 @@ $(function () {
     })
 
 //9. Whenever a list item with a class of data-item is hovered over, display that list item's data-id value in the span with an id of data-display.
-    $('li.data-item').hover(
+    $('.data-item').hover(
         function () {
-            $('#data-display').text($('li.data-item[data-id]'))
+            $('#data-display').text($(this).attr('data-id'));
         },
         function () {
-            $('#data-display').text("")
+            $('#data-display').text("");
         }
     );
 
 //10. Whenever the button with an id of change-text-btn is clicked, change that button's text to whatever has been typed in the input with an id of change-text-input.
+    $('#change-text-btn').click(function () {
+        // $(this).text($('#change-text-input').value);
+        var inputVal = $('#change-text-input').val();
+        $(this).text(inputVal);
+    })
 
 });
 
