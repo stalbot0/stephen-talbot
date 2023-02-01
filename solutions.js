@@ -50,7 +50,7 @@ const people = [{
 function minAge(array) {
     return array.reduce((accumulator, current) => {
         return accumulator.age < current.age ? accumulator.age : current;
-    }, 100000000);
+    }, Number.POSITIVE_INFINITY);
 }
 
 console.log(minAge(people));
@@ -64,20 +64,36 @@ function longestName(array) {
 
 console.log(longestName(people));
 
-//5. Write a function called createPerson that takes a name parameter and an age parameter and returns an object containing the given name and age as properties.
-function createPerson(name, age) {
-    return {
-        name: name,
-        age: age
-    };
+
+function longestName2(arr) {
+    let longestNameSoFar = "";
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].name.length > longestNameSoFar.length) {
+            longestNameSoFar = arr[i].name;
+        }
+    }
+    return longestNameSoFar;
 }
 
-console.log(createPerson("Stephen", 28));
+console.log(longestName2(people));
+
+//5. Write a function called createPerson that takes a name parameter and an age parameter and returns an object containing the given name and age as properties.
+function createPerson(name, age) {
+    const newPerson =
+        {
+            name: name,
+            age: age
+        };
+    return newPerson;
+}
+
+const myName = createPerson("Stephen", 28)
+console.log(myName);
 
 //6. When the button with an id of bold-btn is clicked, that button's font weight should change to bold.
 $(function () {
     $('#bold-btn').click(function () {
-        $(this).css('font-weight', 'bold');
+        $(this).css('font-weight', 'bolder');
     })
 
 // var boldBtn = document.querySelector('#bold-btn');
@@ -89,7 +105,7 @@ $(function () {
 
 //7. When the button with an id of reload-btn is clicked, the page should reload (i.e., refresh).
     $('#reload-btn').click(function () {
-        location.reload();
+        window.location.reload();
     })
 
 // var reloadBtn = document.querySelector('#reload-btn');
@@ -107,7 +123,9 @@ $(function () {
 //9. Whenever a list item with a class of data-item is hovered over, display that list item's data-id value in the span with an id of data-display.
     $('.data-item').hover(
         function () {
-            $('#data-display').text($(this).attr('data-id'));
+            const dataID = $(this).attr('data-id');
+            // const dataID2 = $(this).data('id');  CAN USE BOTH
+            $('#data-display').text(dataID);
         },
         function () {
             $('#data-display').text("");
@@ -123,5 +141,38 @@ $(function () {
 
 });
 
+//11. Write a function definition named onlyPositiveNumbers that takes in sequence of numbers and returns the positive numbers in an array.
+const numArray = [-5, -4, -3, -2, -1, 1, 2, 3, 4, 5];
 
+function onlyPositiveNumbers(arr) {
+    var positiveNums = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > 0) {
+            positiveNums.push(arr[i]);
+        }
+    }
+    return positiveNums;
+}
 
+console.log(onlyPositiveNumbers(numArray));
+
+function onlyPosNums(arr) {
+    return arr.filter(function (nums) {
+        return nums > 0;
+    }, Number.NEGATIVE_INFINITY);
+}
+
+console.log(onlyPosNums(numArray));
+
+//12. Write a function definition named countEvens that takes in sequence of numbers and returns the number of even numbers
+function countEvens(sequence) {
+    var newCount = 0;
+    for (let i = 0; i < sequence.length; i++) {
+        if (sequence[i] % 2 === 0) {
+            newCount ++;
+        }
+    }
+    return newCount;
+}
+
+console.log(countEvens(numArray));
